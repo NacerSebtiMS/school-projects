@@ -40,7 +40,6 @@
 						<?php echo $data["element"]; ?>
 					</td>
 					<td>
-						<?php print_r($data); ?>
 						<a href=''>
 					<?php if ($data["annule"]>0) {
 						echo "<img src='icons/lamps/red'>";
