@@ -1,6 +1,5 @@
 actionsPossibles(L,R) :-
-    clean(),
-    scrib(L),
+    scrib(L),clean(),scrib(L),
     findall(move(X,Y,Z),move(X,Y,Z),MoveIt),
     findall(moveToTable(A,B),moveToTable(A,B),MoveTT),
     append(MoveIt,MoveTT,R),
