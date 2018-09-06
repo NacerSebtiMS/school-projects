@@ -5,22 +5,17 @@ actionsPossibles(L,R) :-
     append(MoveIt,MoveTT,R),
     clean().
 
-etatSuccesseur(L,X,R) :-
-    scrib(L),clean(),scrib(L),
-    eS(L,X,R).
-eS(L,move(X,F,T),L) :-
-    delete_in_set(on(X,F),L,L),
-    delete_in_set(clear(T),L,L),
+etatSuccesseur(L,move(X,F,T),R) :-
+    delete_in_set(on(X,F),L,L1),
+    delete_in_set(clear(T),L1,L2),
 
-    add_in_set(on(X,T),L,L),
-    add_in_set(clear(F),L,L).
+    add_in_set(on(X,T),L2,L3),
+    add_in_set(clear(F),L3,R).
 
-eS(L,moveToTable(X,F),L) :-
-    delete_in_set(on(X,F),L,L),
-    write(L),
-    append([on(X,table)],L,L),
-    append([clear(F)],L,L),
-    write(L).
+etatSuccesseur(L,moveToTable(X,F),R) :-
+    delete_in_set(on(X,F),L,L1),
+    append([on(X,table)],L1,L2),
+    append([clear(F)],L2,R).
 
 scrib([]).
 scrib([X|Z]) :- assertz(X),scrib(Z).
